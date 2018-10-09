@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title>html5文档结构</title>
+    <link rel="stylesheet" href="../static/css/common.css">
+    <script type="text/javascript" src="../static/js/utils.js"></script>
   </head>
   <body>
     <header>
@@ -11,22 +13,145 @@
     <main>
       <section>
         <h2>article元素</h2>
-        <p class="code">
+        <p>article元素代表文档中一段独立且完整的内容，包括自己的header，内容和foolter</p>
+        <pre class="code">
+          <code id="example-article1-code">
+          </code>
+        </pre>
+        <div class="preview" id="example-article1-preview"></div>
+        <template id="example-article1-tpl" type="text/html">
+          <article>
+            <header>
+              <h1>苹果</h1>
+              <p>发表日期: <time pubdate="pubdate">2010/10/01</time> </p>
+            </header>
+            <p><b>苹果</b>，植物类水果。。。（正文）</p>
+            <footer>
+              <p> <small>著作权归xxx</small> </p>
+            </footer>
+          </article>
+        </template>
 
-        </p>
+        <p>article元素可以嵌套使用，内层的内容原则上需要和外层的内容相关联，例如一篇博文里面的评论</p>
+        <pre class="code">
+          <code id="example-article2-code"></code>
+        </pre>
+        <div class="preview" id="example-article2-preview"></div>
+        <template id="example-article2-tpl">
+          <article>
+            <header>
+              <h1>苹果</h1>
+              <p>发表日期: <time pubdate="pubdate">2010/10/01</time> </p>
+            </header>
+            <p><b>苹果</b>，植物类水果。。。（正文）</p>
+            <section>
+              <h2>评论</h2>
+              <article>
+                <header>
+                  <h3>发表者：张小凡</h3>
+                  <p>发表日期: <time pubdate="pubdate">2010/10/01</time> </p>
+                </header>
+                <p>我喜欢苹果，我最喜欢水晶红富士</p>
+              </article>
+              <article>
+                <header>
+                  <h3>发表者：小天</h3>
+                  <p>发表日期: <time pubdate="pubdate">2010/10/01</time> </p>
+                </header>
+                <p>我喜欢吃橘子</p>
+              </article>
+            </section>
+            <footer>
+              <p> <small>著作权归xxx</small> </p>
+            </footer>
+          </article>
+        </template>
+        <p>上面这个例子中，评论的内容通过section元素与博文的内容进行区分，section元素的作用是分块。</p>
+
       </section>
+
       <section>
         <h2>section元素</h2>
-        <p class="code">
-
-        </p>
+        <p>section元素用来对网站内容进行分块，或者对文章进行分段。一个section通常由标题和内容组成。但是section并非普通的容器元素，如果想对容器元素定义样式或脚本行为，推荐使用div</p>
+        <p>不要将section与表示“有着自己的完整的独立的内容”的article元素混淆</p>
+        <pre class="code"> <code id="example-section1-code"></code> </pre>
+        <div class="preview" id="example-section1-preview"></div>
+        <template id="example-section1-tpl">
+          <article>
+            <section>
+              <h1>苹果</h1>
+              <p><b>苹果</b>，植物类水果。。。（正文）</p>
+            </section>
+            <section>
+              <h2>红富士</h2>
+              <p>红富士是从普通富士中选育出来的</p>
+            </section>
+            <section>
+              <h2>国光</h2>
+              <p>国光苹果，又名小国光。原产地美国。1600年偶然发现</p>
+            </section>
+          </article>
+        </template>
+        <p>上面的例子是一篇关于苹果的文章，共有3段。每段是一个section</p>
       </section>
+
       <section>
         <h2>nav元素</h2>
-        <p class="code">
-
+        <p>nav元素用来作为页面导航的连接组，其中的导航元素链接到其他页面或者当前页面的其他部分。一个页面可以有多个nav元素，作为页面整体的导航和不同部分的导航</p>
+        <pre class="code"><code id="example-nav1-code"></code></pre>
+        <div class="preview" id="example-nav1-preview"></div>
+        <template id="example-nav1-tpl" type="text/html">
+          <div>
+            <h1>技术资料</h1>
+            <nav>
+              <ul>
+                <li> <a href="/">主页</a> </li>
+                <li> <a href="../form/index.html">表单</a> </li>
+                ...more...
+              </ul>
+            </nav>
+            <article>
+              <header>
+                <h1>html5与css3的历史</h1>
+                <nav>
+                  <ul>
+                    <li> <a href="#HTML5">html5的历史</a> </li>
+                    <li> <a href="#CSS3">css3的历史</a> </li>
+                  </ul>
+                </nav>
+              </header>
+              <section id="HTML5">
+                <h1>html5的发展历史</h1>
+                <p>讲述html5发展的正文</p>
+              </section>
+              <section id="CSS3">
+                <h1>css3的发展历史</h1>
+                <p>讲述css3发展额正文</p>
+              </section>
+              <footer>
+                <p>
+                  <a href="?eddit">编辑</a>
+                  <a href="?delete">删除</a>
+                  <a href="?rename">重命名</a>
+                </p>
+              </footer>
+            </article>
+            <footer>
+              <p>版权所有xxx</p>
+            </footer>
+          </div>
+        </template>
+        <p>具体来说，nav元素可以用在：</p>
+        <p>
+          <ul>
+            <li>传统导航条</li>
+            <li>侧边栏导航条</li>
+            <li>业内导航</li>
+            <li>翻页操作</li>
+          </ul>
         </p>
       </section>
+
       <section>
         <h2>aside</h2>
         <p class="code">
@@ -53,4 +178,13 @@
       </section>
     </main>
   </body>
+
+  <script type="text/javascript">
+    var exampleIdPrefixs = ['example-article1', 'example-article2',
+    'example-section1', 'example-nav1'];
+
+    exampleIdPrefixs.forEach(function(id) {
+      insertCodeAndPreview(id);
+    });
+  </script>
 </html>
